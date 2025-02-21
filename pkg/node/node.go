@@ -102,7 +102,7 @@ func (e *Node) Start(ctx context.Context) error {
 	// The ledger needs to read them and update the internal blockchain
 	e.config.Handlers = append(e.config.Handlers, ledger.Update)
 
-	e.config.Logger.Info("Starting EdgeVPN network")
+	e.config.Logger.Info("Starting WarpNet network")
 
 	// Startup libp2p network
 	err = e.startNetwork(ctx)
@@ -124,7 +124,7 @@ func (e *Node) Start(ctx context.Context) error {
 	return nil
 }
 
-// messageWriter returns a new MessageWriter bound to the edgevpn instance
+// messageWriter returns a new MessageWriter bound to the WarpNet instance
 // with the given options
 func (e *Node) messageWriter(opts ...hub.MessageOption) (*messageWriter, error) {
 	mess := &hub.Message{}

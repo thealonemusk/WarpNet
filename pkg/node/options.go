@@ -2,7 +2,7 @@ package node
 
 import (
 	"encoding/base64"
-	"io/ioutil"
+	"os"
 	"time"
 
 	"github.com/ipfs/go-log"
@@ -335,7 +335,7 @@ func FromYaml(enablemDNS, enableDHT bool, path string, d *discovery.DHT, m *disc
 		}
 		t := YAMLConnectionConfig{}
 
-		data, err := ioutil.ReadFile(path)
+		data, err := os.ReadFile(path)
 		if err != nil {
 			return errors.Wrap(err, "reading yaml file")
 		}
