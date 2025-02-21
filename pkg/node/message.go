@@ -1,7 +1,7 @@
 package node
 
 import (
-	hub "github.com/mudler/edgevpn/pkg/hub"
+	hub "github.com/thealonemusk/WarpNet/pkg/hub"
 )
 
 // messageWriter is a struct returned by the node that satisfies the io.Writer interface
