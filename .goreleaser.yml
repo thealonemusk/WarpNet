@@ -13,10 +13,10 @@ builds:
       - darwin
       - freebsd
     goarch:
-      - amd64
-      - arm
-      - 386
-      - arm64
+      - "amd64"
+      - "arm"
+      - "386"
+      - "arm64"
 source:
   enabled: true
   name_template: '{{ .ProjectName }}-{{ .Tag }}-source'

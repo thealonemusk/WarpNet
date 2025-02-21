@@ -18,7 +18,6 @@ type Logger struct {
 
 func New(lvl log.LogLevel) *Logger {
 	cfg := zap.Config{
-
 		Encoding:         "json",
 		OutputPaths:      []string{"stdout"},
 		ErrorOutputPaths: []string{"stderr"},
@@ -37,72 +36,73 @@ func New(lvl log.LogLevel) *Logger {
 	if err != nil {
 		panic(err)
 	}
-	defer logger.Sync()
 
 	sugar := logger.Sugar()
-
 	return &Logger{level: lvl, zap: sugar}
 }
 
 func joinMsg(args ...interface{}) (message string) {
-	for _, m := range args {
-		message += " " + fmt.Sprintf("%v", m)
+	for i, m := range args {
+		if i > 0 {
+			message += " "
+		}
+		message += fmt.Sprintf("%v", m)
 	}
 	return
 }
 
-func (l Logger) Debug(args ...interface{}) {
+func (l *Logger) Debug(args ...interface{}) {
 	l.zap.Debug(joinMsg(args...))
 }
 
-func (l Logger) Debugf(f string, args ...interface{}) {
-	l.zap.Debugf(f+"\n", args...)
+func (l *Logger) Debugf(f string, args ...interface{}) {
+	l.zap.Debugf(f, args...)
 }
 
-func (l Logger) Error(args ...interface{}) {
+func (l *Logger) Error(args ...interface{}) {
 	l.zap.Error(joinMsg(args...))
 }
 
-func (l Logger) Errorf(f string, args ...interface{}) {
-	l.zap.Errorf(f+"\n", args...)
+func (l *Logger) Errorf(f string, args ...interface{}) {
+	l.zap.Errorf(f, args...)
 }
 
-func (l Logger) Fatal(args ...interface{}) {
+func (l *Logger) Fatal(args ...interface{}) {
 	l.zap.Fatal(joinMsg(args...))
 }
 
-func (l Logger) Fatalf(f string, args ...interface{}) {
-	l.zap.Fatalf(f+"\n", args...)
+func (l *Logger) Fatalf(f string, args ...interface{}) {
+	l.zap.Fatalf(f, args...)
 }
 
-func (l Logger) Info(args ...interface{}) {
+func (l *Logger) Info(args ...interface{}) {
 	l.zap.Info(joinMsg(args...))
 }
 
-func (l Logger) Infof(f string, args ...interface{}) {
-	l.zap.Infof(f+"\n", args...)
+func (l *Logger) Infof(f string, args ...interface{}) {
+	l.zap.Infof(f, args...)
 }
 
-func (l Logger) Panic(args ...interface{}) {
+func (l *Logger) Panic(args ...interface{}) {
 	l.Fatal(args...)
 }
 
-func (l Logger) Panicf(f string, args ...interface{}) {
+func (l *Logger) Panicf(f string, args ...interface{}) {
 	l.Fatalf(f, args...)
 }
 
-func (l Logger) Warn(args ...interface{}) {
+func (l *Logger) Warn(args ...interface{}) {
 	l.zap.Warn(joinMsg(args...))
 }
 
-func (l Logger) Warnf(f string, args ...interface{}) {
-	l.zap.Warnf(f+"\n", args...)
+func (l *Logger) Warnf(f string, args ...interface{}) {
+	l.zap.Warnf(f, args...)
 }
 
-func (l Logger) Warning(args ...interface{}) {
+func (l *Logger) Warning(args ...interface{}) {
 	l.Warn(args...)
 }
 
-func (l Logger) Warningf(f string, args ...interface{}) {
+func (l *Logger) Warningf(f string, args ...interface{}) {
 	l.Warnf(f, args...)
 }
