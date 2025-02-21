@@ -36,7 +36,7 @@ func FileSend() *cli.Command {
 		Aliases:     []string{"fs"},
 		Usage:       "Serve a file to the network",
 		Description: `Serve a file to the network without connecting over VPN`,
-		UsageText:   "edgevpn file-send unique-id /src/path",
+		UsageText:   "WarpNet file-send unique-id /src/path",
 		Flags: append(CommonFlags,
 			&cli.StringFlag{
 				Name:     "name",
@@ -96,7 +96,7 @@ func FileReceive() *cli.Command {
 		Aliases:     []string{"fr"},
 		Usage:       "Receive a file which is served from the network",
 		Description: `Receive a file from the network without connecting over VPN`,
-		UsageText:   "edgevpn file-receive unique-id /dst/path",
+		UsageText:   "WarpNet file-receive unique-id /dst/path",
 		Flags: append(CommonFlags,
 			&cli.StringFlag{
 				Name:  "name",

@@ -14,7 +14,7 @@ func DNS() *cli.Command {
 		Name:        "dns",
 		Usage:       "Starts a local dns server",
 		Description: `Start a local dns server which uses the blockchain to resolve addresses`,
-		UsageText:   "edgevpn dns",
+		UsageText:   "WarpNet dns",
 		Flags: append(CommonFlags,
 			&cli.StringFlag{
 				Name:    "listen",
