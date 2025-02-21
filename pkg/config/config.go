@@ -29,7 +29,7 @@ import (
 	"github.com/thealonemusk/WarpNet/pkg/vpn"
 )
 
-// Config is the config struct for the node and the default EdgeVPN services
+// Config is the config struct for the node and the default WarpNet services
 // It is used to generate opts for the node and the services before start.
 type Config struct {
 	NetworkConfig, NetworkToken                string
@@ -126,7 +126,7 @@ type NAT struct {
 func (c Config) Validate() error {
 	if c.NetworkConfig == "" &&
 		c.NetworkToken == "" {
-		return fmt.Errorf("EDGEVPNCONFIG or EDGEVPNTOKEN not supplied. At least a config file is required")
+		return fmt.Errorf("WarpNetCONFIG or WarpNetTOKEN not supplied. At least a config file is required")
 	}
 	return nil
 }
@@ -243,7 +243,7 @@ func (c Config) ToOpts(l *logger.Logger) ([]node.Option, []vpn.Option, error) {
 		vpn.WithInterfaceName(iface),
 	}
 
-	libp2pOpts := []libp2p.Option{libp2p.UserAgent("edgevpn")}
+	libp2pOpts := []libp2p.Option{libp2p.UserAgent("WarpNet")}
 
 	// AutoRelay section configuration
 	if c.Connection.AutoRelay {

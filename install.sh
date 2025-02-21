@@ -104,42 +104,42 @@ setup_service() {
     fi
 
     if [ "${HAS_SYSTEMD}" = true ]; then
-        FILE_SERVICE=${SYSTEMD_DIR}/edgevpn@.service
+        FILE_SERVICE=${SYSTEMD_DIR}/WarpNet@.service
         $SUDO tee $FILE_SERVICE >/dev/null << EOF
 [Unit]
-Description=EdgeVPN Daemon
+Description=WarpNet Daemon
 After=network.target
 
 [Service]
-EnvironmentFile=/etc/systemd/system.conf.d/edgevpn-%i.env
+EnvironmentFile=/etc/systemd/system.conf.d/WarpNet-%i.env
 LimitNOFILE=49152
 ExecStartPre=-/bin/sh -c "sysctl -w net.core.rmem_max=2500000"
-ExecStart=$BIN_DIR/edgevpn
+ExecStart=$BIN_DIR/WarpNet
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
 EOF
     elif [ "${HAS_OPENRC}" = true ]; then
-        $SUDO tee /etc/init.d/edgevpn >/dev/null << EOF
+        $SUDO tee /etc/init.d/WarpNet >/dev/null << EOF
 #!/sbin/openrc-run
 depend() {
     after network-online
 }
 
 supervisor=supervise-daemon
-name=edgevpn
-command="${BIN_DIR}/edgevpn"
-command_args="$(escape_dq "edgevpn")
+name=WarpNet
+command="${BIN_DIR}/WarpNet"
+command_args="$(escape_dq "WarpNet")
     >>${LOG_FILE} 2>&1"
 output_log=${LOG_FILE}
 error_log=${LOG_FILE}
-pidfile="/var/run/edgevpn.pid"
+pidfile="/var/run/WarpNet.pid"
 respawn_delay=5
 respawn_max=0
 set -o allexport
 if [ -f /etc/environment ]; then source /etc/environment; fi
-if [ -f /etc/edgevpn.env ]; then source /etc/edgevpn.env; fi
+if [ -f /etc/WarpNet.env ]; then source /etc/WarpNet.env; fi
 set +o allexport
 EOF
     fi
@@ -168,14 +168,14 @@ download() {
 install() {
     info "Arch: $ARCH. OS: $OS Version: $VERSION (\$VERSION)"
 
-    TMP_DIR=$(mktemp -d -t edgevpn-install.XXXXXXXXXX)
+    TMP_DIR=$(mktemp -d -t WarpNet-install.XXXXXXXXXX)
 
-    download $TMP_DIR/out.tar.gz https://github.com/thealonemusk/WarpNet/releases/download/$VERSION/edgevpn-$VERSION-$OS-$ARCH.tar.gz
+    download $TMP_DIR/out.tar.gz https://github.com/thealonemusk/WarpNet/releases/download/$VERSION/WarpNet-$VERSION-$OS-$ARCH.tar.gz
 
     # TODO verify w/ checksum
     tar xvf $TMP_DIR/out.tar.gz -C $TMP_DIR
 
-    $SUDO cp -rf $TMP_DIR/edgevpn $BIN_DIR/
+    $SUDO cp -rf $TMP_DIR/WarpNet $BIN_DIR/
 
     # TODO trap
     rm -rf $TMP_DIR

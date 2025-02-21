@@ -71,7 +71,7 @@ func VPNNetworkService(p ...Option) node.NetworkService {
 		}
 
 		// Set stream handler during runtime
-		n.Host().SetStreamHandler(protocol.EdgeVPN.ID(), streamHandler(b, ifce, c, nc))
+		n.Host().SetStreamHandler(protocol.WarpNet.ID(), streamHandler(b, ifce, c, nc))
 
 		// Announce our IP
 		ip, _, err := net.ParseCIDR(c.InterfaceAddress)
@@ -241,7 +241,7 @@ func handleFrame(mgr streamManager, frame ethernet.Frame, c *Config, n *node.Nod
 		}
 	}
 
-	stream, err = n.Host().NewStream(ctx, d, protocol.EdgeVPN.ID())
+	stream, err = n.Host().NewStream(ctx, d, protocol.WarpNet.ID())
 	if err != nil {
 		return fmt.Errorf("could not open stream to %s: %w", d.String(), err)
 	}
