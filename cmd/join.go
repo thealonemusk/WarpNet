@@ -13,7 +13,7 @@ func Start() *cli.Command {
 		Usage: "Start the network without activating any interface",
 		Description: `Connect over the p2p network without establishing a VPN.
 Useful for setting up relays or hop nodes to improve the network connectivity.`,
-		UsageText: "edgevpn start",
+		UsageText: "WarpNet start",
 		Flags:     CommonFlags,
 		Action: func(c *cli.Context) error {
 			o, _, ll := cliToOpts(c)
