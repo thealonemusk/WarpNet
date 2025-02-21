@@ -66,7 +66,10 @@ jobs:
               sudo chmod +x ./.github/tests.sh
               sudo sysctl -w net.core.rmem_max=2500000
               chmod +x WarpNet
-              WarpNetCONFIG=config.yaml sudo ./.github/tests.sh
+              # Install ginkgo binary to PATH
+              go install -mod=mod github.com/onsi/ginkgo/v2/ginkgo@latest
+              export PATH=$PATH:$(go env GOPATH)/bin
+              WarpNetCONFIG=config.yaml sudo -E ./.github/tests.sh
       - name: Codecov
         uses: codecov/codecov-action@v5.3.1
         with:
