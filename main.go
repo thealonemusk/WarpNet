@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/thealonemusk/WarpNet/cmd"
 	internal "github.com/thealonemusk/WarpNet/internal"
 	"github.com/urfave/cli/v2"
-	"os"
 )
 
 func main() {
@@ -13,7 +14,7 @@ func main() {
 	app := &cli.App{
 		Name:        "WarpNet",
 		Version:     internal.Version,
-		Authors:     []*cli.Author{{Name: "Ettore Di Giacinto"}},
+		Authors:     []*cli.Author{{Name: "Ashutosh Jha"}},
 		Usage:       "WarpNet --config /etc/WarpNet/config.yaml",
 		Description: "WarpNet uses libp2p to build an immutable trusted blockchain addressable p2p network",
 		Copyright:   cmd.Copyright,
