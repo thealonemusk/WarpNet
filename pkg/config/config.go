@@ -25,7 +25,6 @@ import (
 	"github.com/thealonemusk/WarpNet/pkg/logger"
 	"github.com/thealonemusk/WarpNet/pkg/node"
 	"github.com/thealonemusk/WarpNet/pkg/trustzone"
-	"github.com/thealonemusk/WarpNet/pkg/trustzone/authprovider/ecdsa"
 	"github.com/thealonemusk/WarpNet/pkg/vpn"
 )
 

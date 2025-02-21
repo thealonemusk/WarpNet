@@ -11,13 +11,13 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
+	. "github.com/mudler/edgevpn/pkg/trustzone/authprovider/ecdsa"
 	"github.com/thealonemusk/WarpNet/pkg/blockchain"
 	"github.com/thealonemusk/WarpNet/pkg/logger"
 	node "github.com/thealonemusk/WarpNet/pkg/node"
 	"github.com/thealonemusk/WarpNet/pkg/protocol"
 	"github.com/thealonemusk/WarpNet/pkg/trustzone"
 	. "github.com/thealonemusk/WarpNet/pkg/trustzone"
-	. "github.com/thealonemusk/WarpNet/pkg/trustzone/authprovider/ecdsa"
 )
 
 var _ = Describe("trustzone", func() {
