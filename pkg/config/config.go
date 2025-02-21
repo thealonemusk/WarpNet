@@ -2,12 +2,6 @@ package config
 
 import (
 	"fmt"
-	"math/bits"
-	"os"
-	"runtime"
-	"strings"
-	"time"
-
 	"github.com/ipfs/go-log"
 	"github.com/libp2p/go-libp2p"
 	dht "github.com/libp2p/go-libp2p-kad-dht"
@@ -25,7 +19,13 @@ import (
 	"github.com/thealonemusk/WarpNet/pkg/logger"
 	"github.com/thealonemusk/WarpNet/pkg/node"
 	"github.com/thealonemusk/WarpNet/pkg/trustzone"
+	"github.com/thealonemusk/WarpNet/pkg/trustzone/authprovider"
 	"github.com/thealonemusk/WarpNet/pkg/vpn"
+	"math/bits"
+	"os"
+	"runtime"
+	"strings"
+	"time"
 )
 
 // Config is the config struct for the node and the default WarpNet services

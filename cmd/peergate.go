@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 	//ashutosh
-	"github.com/mudler/edgevpn/pkg/trustzone/authprovider/ecdsa"
+	"github.com/thealonemusk/WarpNet/pkg/trustzone/authprovider"
 	"github.com/urfave/cli/v2"
 )
 
