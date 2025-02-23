@@ -34,11 +34,29 @@ type MessageHub struct {
 const roomBufSize = 128
 
 func NewHub(otp string, maxsize, keyLength, interval int, joinPublic bool) *MessageHub {
-	return &MessageHub{otpKey: otp, maxsize: maxsize, keyLength: keyLength, interval: interval,
-		Messages: make(chan *Message, roomBufSize), PublicMessages: make(chan *Message, roomBufSize), joinPublic: joinPublic}
+	if interval <= 0 {
+		interval = 30 // Default to 30 seconds if invalid interval
+	}
+
+	return &MessageHub{
+		otpKey:         otp,
+		maxsize:        maxsize,
+		keyLength:      keyLength,
+		interval:       interval,
+		Messages:       make(chan *Message, roomBufSize),
+		PublicMessages: make(chan *Message, roomBufSize),
+		joinPublic:     joinPublic,
+	}
 }
 
 func (m *MessageHub) topicKey(salts ...string) string {
+	if m.interval <= 0 {
+		m.interval = 30 // Default to 30 seconds if invalid
+	}
+	if m.keyLength <= 0 {
+		m.keyLength = 6 // Default to 6 digits if invalid
+	}
+
 	totp := crypto.TOTP(sha256.New, m.keyLength, m.interval, m.otpKey)
 	if len(salts) > 0 {
 		return crypto.MD5(totp + strings.Join(salts, ":"))
