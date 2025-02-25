@@ -1,3 +1,9 @@
+##Problem Statement:
+Existing decentralized VPNs suffer from high latency, unreliable nodes, lack of Kubernetes integration, and weak censorship resistance, making them impractical for performance-critical and enterprise use cases.
+
+##Solution:
+We are building a high-performance, trustless, and Kubernetes-native dVPN with intelligent relay selection, Zero-Knowledge Proof-based exit security, adaptive traffic obfuscation, and a pay-as-you-use incentive model to ensure fast, secure, and censorship-resistant networking at scale.
+
 <p align="center">
 	 <br>
     Fully Decentralized. Immutable. Portable. Easy to use Statically compiled VPN and a reverse proxy over p2p.<br>
@@ -208,13 +214,6 @@ You can improve this project by contributing in following ways:
 - asking questions (just open an issue)
 
 and any other way if not mentioned here.
-
-# :notebook: Credits
-
-- The awesome [libp2p](https://github.com/libp2p) library
-- [https://github.com/songgao/water](https://github.com/songgao/water) for tun/tap devices in golang
-- [Room example](https://github.com/libp2p/go-libp2p/tree/master/examples/chat-with-rendezvous) (shamelessly parts are copied by)
-- Logo originally made by [Uniconlabs](https://www.flaticon.com/authors/uniconlabs) from [www.flaticon.com](https://www.flaticon.com/), modified by me
 
 # :notebook: Troubleshooting
 
