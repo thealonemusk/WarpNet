@@ -117,7 +117,8 @@ func (e *Node) Start(ctx context.Context) error {
 	for _, s := range e.config.NetworkServices {
 		err := s(ctx, e.config, e, ledger)
 		if err != nil {
-			return fmt.Errorf("error while starting network service: '%w'", err)
+			e.config.Logger.Warn(fmt.Sprintf("Error starting network service: %v", err))
+			continue
 		}
 	}
 
