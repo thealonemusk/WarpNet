@@ -1,0 +1,70 @@
+{
+    "networkConfig": "",
+    "networkToken": "",
+    "listenMaddrs": [
+        "/ip4/0.0.0.0/tcp/0",
+        "/ip6/::/tcp/0"
+    ],
+    "dhtAnnounceMaddrs": [],
+    "interface": "warp0",
+    "address": "10.1.0.1/24",
+    "router": "",
+    "libp2pLogLevel": "fatal",
+    "logLevel": "info",
+    "lowProfile": true,
+    "blacklist": [],
+    "whitelist": [],
+    "concurrency": 4,
+    "frameTimeout": "15s",
+    "channelBufferSize": 0,
+    "interfaceMTU": 1200,
+    "packetMTU": 1420,
+    "bootstrapIface": true,
+    "ledger": {
+        "stateDir": "~/.WarpNet/state",
+        "announceInterval": "10s",
+        "syncInterval": "10s"
+    },
+    "nat": {
+        "service": true,
+        "map": true,
+        "rateLimit": true,
+        "rateLimitGlobal": 10,
+        "rateLimitPeer": 10,
+        "rateLimitInterval": "60s"
+    },
+    "discovery": {
+        "bootstrapPeers": [
+            "/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
+            "/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"
+        ],
+        "dht": true,
+        "mdns": true,
+        "interval": "720s"
+    },
+    "connection": {
+        "autoRelay": true,
+        "maxConnections": 0,
+        "holePunch": true,
+        "staticRelays": [],
+        "autoRelayDiscoveryInterval": "5m",
+        "onlyStaticRelays": false,
+        "highWater": 0,
+        "lowWater": 0,
+        "peerTable": {}
+    },
+    "limit": {
+        "enable": false,
+        "fileLimit": "",
+        "scope": "system",
+        "maxConns": 0
+    },
+    "peerGuard": {
+        "enable": false,
+        "peerGate": false,
+        "relaxed": false,
+        "autocleanup": false,
+        "syncInterval": "120s",
+        "authProviders": {}
+    }
+}

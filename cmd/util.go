@@ -389,6 +389,45 @@ func stringsToMultiAddr(peers []string) []multiaddr.Multiaddr {
 
 // ConfigFromContext returns a config object from a cli context
 func ConfigFromContext(c *cli.Context) *config.Config {
+	// Add check for config/token at the start
+	if c.String("config") == "" && c.String("token") == "" {
+		// Create default config path
+		defaultConfigPath := filepath.Join(stateDir(), "config.json")
+
+		// Initialize logger
+		lvl, _ := log.LevelFromString("error")
+		log.SetAllLoggers(lvl)
+		logger := log.Logger("WarpNet")
+
+		// Create default config
+		defaultConfig := &config.Config{
+			NetworkConfig: defaultConfigPath,
+			ListenMaddrs:  []string{"/ip4/0.0.0.0/tcp/0"},
+			LogLevel:      "info",
+			Interface:     "warp0",
+			// Add other necessary default values
+		}
+
+		// Create config directory if it doesn't exist
+		configDir := filepath.Dir(defaultConfigPath)
+		if err := os.MkdirAll(configDir, 0755); err != nil {
+			logger.Fatal("Failed to create config directory:", err)
+		}
+
+		// Write default config to file
+		configData, err := json.MarshalIndent(defaultConfig, "", "    ")
+		if err != nil {
+			logger.Fatal("Failed to marshal default config:", err)
+		}
+
+		if err := os.WriteFile(defaultConfigPath, configData, 0644); err != nil {
+			logger.Fatal("Failed to write default config:", err)
+		}
+
+		// Set the config path
+		c.Set("config", defaultConfigPath)
+	}
+
 	var limitConfig *rcmgr.PartialLimitConfig
 
 	autorelayInterval, err := time.ParseDuration(c.String("autorelay-discovery-interval"))
