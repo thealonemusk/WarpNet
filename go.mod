@@ -1,7 +1,6 @@
 module github.com/thealonemusk/WarpNet
 
 go 1.23
-
 toolchain go1.23.6
 
 require (
@@ -21,7 +20,7 @@ require (
 	github.com/miekg/dns v1.1.63
 	github.com/mudler/water v0.0.0-20221010214108-8c7313014ce0
 	github.com/multiformats/go-multiaddr v0.14.0
-	github.com/onsi/ginkgo/v2 v2.22.2
+	github.com/onsi/ginkgo/v2 v2.23.0
 	github.com/onsi/gomega v1.36.2
 	github.com/peterbourgon/diskv v2.0.1+incompatible
 	github.com/pkg/errors v0.9.1
