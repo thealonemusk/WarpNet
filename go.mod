@@ -27,7 +27,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/songgao/packets v0.0.0-20160404182456-549a10cd4091
 	github.com/thealonemusk/go-processmanager v0.0.0-20250221152549-c171e571fcd9
-	github.com/urfave/cli/v2 v2.27.5
+	github.com/urfave/cli/v2 v2.27.6
 	github.com/vishvananda/netlink v1.3.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/sys v0.30.0
