@@ -71,7 +71,7 @@ jobs:
               export PATH=$PATH:$(go env GOPATH)/bin
               WarpNetCONFIG=config.yaml sudo -E ./.github/tests.sh
       - name: Codecov
-        uses: codecov/codecov-action@v5.4.0
+        uses: codecov/codecov-action@v5.4.2
         with:
           files: coverage.txt
           
