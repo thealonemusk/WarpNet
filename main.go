@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-
 	"github.com/thealonemusk/WarpNet/cmd"
 	internal "github.com/thealonemusk/WarpNet/internal"
 	"github.com/urfave/cli/v2"

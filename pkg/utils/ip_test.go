@@ -17,7 +17,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	. "github.com/thealonemusk/WarpNet/utils"
+	. "github.com/thealonemusk/WarpNet/pkg/utils"
 )
 
 var _ = Describe("IP", func() {
