@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Avenir+Next:wght@400;500;600;700&family=Fira+Code:wght@400;700&family=Fira+Mono:wght@400;700&family=Manrope:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap");
+
+:root {
+	--font-base: "Avenir Next", "Manrope", sans-serif;
+	--font-mono: "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+	--h: 180;
+	--s: 2%;
+	--l: 20%;
+	--color-bg: #0a0a0a;
+	--color-grey-100: #fff;
+	--color-grey-300: #e4e7e7;
+	--color-grey-400: #c9cfcf;
+	--color-grey-500: #9ea9a9;
+	--color-grey-700: #7a8484;
+	--color-grey-900: #3b4040;
+	--color-grey-950: #272a2a;
+	--color-primary: hsl(var(--h), var(--s), var(--l));
+	--shadow-md: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+		rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+	--shadow-lg: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+	--rounded-sm: 0.5rem;
+	--rounded-md: 1.5rem;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+html,
+body,
+#root {
+	min-height: 100% !important;
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	font-family: var(--font-base);
+	background-color: var(--color-bg);
+	color: var(--color-grey-100);
+	background-image: url("/pattern.png");
+}
+
+.main-dark {
+	height: 100%;
+	background: linear-gradient(
+		to bottom,
+		var(--color-bg),
+		transparent,
+		var(--color-bg)
+	),
+	url("/pattern.png"),
+	radial-gradient(circle, #281f3ab6 0%, #000 100%);
+	background-color: var(--color-bg);
+}
+
+.main-light {
+	height: 100%;
+	background: linear-gradient(
+			to bottom,
+			var(--color-grey-300),
+			transparent,
+			var(--color-grey-300)
+		),
+		radial-gradient(circle, transparent 0%, var(--color-grey-300) 70%);
+}
+
+pre,
+code {
+	font-family: var(--font-mono);
+}
+
+code {
+	background-color: var(--color-grey-950);
+	padding: 0.25rem 0.5rem;
+	margin: 0 0.25rem;
+	border-radius: 0.4rem;
+	font-size: 0.875rem;
+}
+
+code:before,
+code:after {
+	content: "`";
+}
+
+ul,
+li {
+	list-style-position: inside;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+}
+
+.main-toolbar{
+	background: #3f325c;
+	background: radial-gradient(circle, #362a52 0%, #121212 98%);
+}
+
+.toolbar-light {
+	background: #fff;
+	background: radial-gradient(circle, #7355b9 0%, rgb(79, 65, 158) 98%);
+}
+
+.MuiDrawer-root {
+	backdrop-filter: blur(8px);
+	background-color: rgba(0, 0, 0, 0.411)!important;
+}
+
+.backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 4;
+	pointer-events: none;
+	background: hsla(0, 0%, 4%, 0.75);
+	transition: opacity 0.2s;
+}
+
+@keyframes animateGlow {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 200% 50%;
+	}
+}
+
+.disabled-overlay{
+    position: relative;
+	filter: grayscale(100%) blur(0.15rem);
+}
+
+.disabled-overlay:hover{
+    position: relative;
+	filter: grayscale(80%) blur(0.15rem);
+}
+
+.disabled-overlay::after{
+	content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color:#77777777;
+    z-index: 99;
+}

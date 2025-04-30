@@ -1,0 +1,159 @@
+basePath: /api/v0
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8081
+info:
+  contact:
+    email: info@skypier.io
+    name: Skypier
+    url: http://skypier.io/
+  description: Skypier - Embark securely on web3
+  license:
+    name: MIT
+    url: https://choosealicense.com/licenses/mit/
+  title: Skypier
+  version: 0.0.1
+paths:
+  /:
+    get:
+      description: Default root API message
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Default root API message
+      tags:
+      - VPN
+  /connect/{peerId}:
+    get:
+      description: Connect to a remote libp2p peer and enable new Stream
+      parameters:
+      - description: Peer ID
+        in: path
+        name: peerId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Connect to a remote libp2p peer and enable new Stream
+      tags:
+      - VPN
+  /connected_peers_count:
+    get:
+      description: Get the ConnectedPeers Count
+      produces:
+      - application/json
+      responses: {}
+      summary: Get the ConnectedPeers Count
+      tags:
+      - VPN
+  /getConfig:
+    get:
+      description: Get the content of the configuration file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Get the configuration
+      tags:
+      - config
+  /id:
+    get:
+      description: Get the local libp2p peer ID (this is the identity of your node
+        on the Skypier Network)
+      produces:
+      - application/json
+      responses: {}
+      summary: Get the local peer ID
+      tags:
+      - VPN
+  /me:
+    get:
+      description: Get the local libp2p peer ID and details (OS, uptime, version,
+        etc.)
+      produces:
+      - application/json
+      responses: {}
+      summary: Get the local peer details
+      tags:
+      - VPN
+  /nickname:
+    get:
+      description: Get the node nickname
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get the node nickname
+      tags:
+      - VPN
+  /peer/{peerId}/info:
+    get:
+      description: Get the IP addresses of a remote peer through the DHT
+      parameters:
+      - description: Peer ID
+        in: path
+        name: peerId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get the IP addresses of a remote peer through the DHT
+      tags:
+      - VPN
+  /ping:
+    get:
+      description: Ping the node locally from the UI
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Ping the node locally from the UI
+      tags:
+      - VPN
+  /ping/{peerId}:
+    get:
+      description: Find the addresses from a multiaddr and try to connect to the peer
+      parameters:
+      - description: Peer ID
+        in: path
+        name: peerId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Test the connectivity of a remote host (using Libp2p Connect)
+      tags:
+      - VPN
+  /updateConfig:
+    get:
+      description: Update the content of the configuration file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Update the configuration
+      tags:
+      - config
+swagger: "2.0"

@@ -1,0 +1,233 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Skypier - Embark securely on web3",
+        "title": "Skypier",
+        "contact": {
+            "name": "Skypier",
+            "url": "http://skypier.io/",
+            "email": "info@skypier.io"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://choosealicense.com/licenses/mit/"
+        },
+        "version": "0.0.1"
+    },
+    "host": "localhost:8081",
+    "basePath": "/api/v0",
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Default root API message",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Default root API message",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/connect/{peerId}": {
+            "get": {
+                "description": "Connect to a remote libp2p peer and enable new Stream",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Connect to a remote libp2p peer and enable new Stream",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Peer ID",
+                        "name": "peerId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/connected_peers_count": {
+            "get": {
+                "description": "Get the ConnectedPeers Count",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Get the ConnectedPeers Count",
+                "responses": {}
+            }
+        },
+        "/getConfig": {
+            "get": {
+                "description": "Get the content of the configuration file",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "config"
+                ],
+                "summary": "Get the configuration",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/id": {
+            "get": {
+                "description": "Get the local libp2p peer ID (this is the identity of your node on the Skypier Network)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Get the local peer ID",
+                "responses": {}
+            }
+        },
+        "/me": {
+            "get": {
+                "description": "Get the local libp2p peer ID and details (OS, uptime, version, etc.)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Get the local peer details",
+                "responses": {}
+            }
+        },
+        "/nickname": {
+            "get": {
+                "description": "Get the node nickname",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Get the node nickname",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/peer/{peerId}/info": {
+            "get": {
+                "description": "Get the IP addresses of a remote peer through the DHT",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Get the IP addresses of a remote peer through the DHT",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Peer ID",
+                        "name": "peerId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/ping": {
+            "get": {
+                "description": "Ping the node locally from the UI",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Ping the node locally from the UI",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/ping/{peerId}": {
+            "get": {
+                "description": "Find the addresses from a multiaddr and try to connect to the peer",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VPN"
+                ],
+                "summary": "Test the connectivity of a remote host (using Libp2p Connect)",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Peer ID",
+                        "name": "peerId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/updateConfig": {
+            "get": {
+                "description": "Update the content of the configuration file",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "config"
+                ],
+                "summary": "Update the configuration",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "OpenAPI",
+        "url": "https://swagger.io/resources/open-api/"
+    }
+}

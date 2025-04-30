@@ -1,0 +1,69 @@
+name: Audit
+
+on:
+  # push:
+  #   branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: 1.22
+
+    - name: Verify dependencies
+      run: go mod verify
+
+    - name: Build
+      run: go build -v -ldflags "-s -w" -trimpath -buildvcs=false -o skypier-vpn-ui cmd/skypier-vpn-node/main.go
+
+    - name: Run go vet
+      run: go vet ./...
+
+    - name: Install staticcheck
+      run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+    - name: Run staticcheck
+      run: staticcheck ./...
+
+    - name: Install golint
+      run: go install golang.org/x/lint/golint@latest
+
+    - name: Run golint
+      run: golint ./...
+
+    - name: Run tests
+      run: go test -race -vet=off ./...
+
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: ['amd64', '386', 'arm64']
+        # os: ['linux', 'windows', 'darwin']
+        os: ['linux']
+        # exclude:
+        #   - arch: 386
+        #     os: darwin
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.22
+      - name: Build
+        run: GOOS=${{ matrix.os }} GOARCH=${{ matrix.arch }} go build -o skypier-vpn-${{ matrix.os }}-${{ matrix.arch }} -ldflags "-s -w" -trimpath -buildvcs=false cmd/skypier-vpn-node/main.go
+      - name: Upload Release
+        uses: actions/upload-artifact@v4
+        with:
+          name: Skypier-VPN-${{ matrix.os }}-${{ matrix.arch }}
+          path: skypier-vpn-${{ matrix.os }}-${{ matrix.arch }}
