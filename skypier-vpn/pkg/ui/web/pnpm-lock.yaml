@@ -19,8 +19,8 @@ specifiers:
   '@unlock-protocol/networks': ^0.0.23
   '@unlock-protocol/paywall': ^0.7.1
   '@vitejs/plugin-react': ^4.3.4
-  '@wagmi/core': ^2.17.0
-  '@web3modal/wagmi': 3.5.7
+  '@wagmi/core': ^1.4.13
+  '@web3modal/wagmi': ^3.5.7
   axios: ^1.7.8
   graphql: ^16.11.0
   ipfs-geoip: ^9.1.0
@@ -50,8 +50,8 @@ dependencies:
   '@unlock-protocol/contracts': 0.0.26
   '@unlock-protocol/networks': 0.0.23
   '@unlock-protocol/paywall': 0.7.1
-  '@wagmi/core': 2.17.0_53oqjmnttgdg7dbfa4xyhdzodm
-  '@web3modal/wagmi': 3.5.7_ore6gowqjk3swvohdgkdceq2my
+  '@wagmi/core': 1.4.13_53oqjmnttgdg7dbfa4xyhdzodm
+  '@web3modal/wagmi': 3.5.7_wcny36q2txrkvpdrw2ucvpdhou
   axios: 1.9.0
   graphql: 16.11.0
   ipfs-geoip: 9.2.0
@@ -2327,30 +2327,6 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/core/2.17.0_53oqjmnttgdg7dbfa4xyhdzodm:
-    resolution: {integrity: sha512-MykiuU0rZUKtgVBctnOM+53zJmtodTD7rA97e7lLhXUevZcm60hUSl1BcgEIDd2wVOLEi2Xfrx641xpjruZvSA==}
-    peerDependencies:
-      '@tanstack/query-core': '>=5.0.0'
-      typescript: '>=5.0.4'
-      viem: 2.x
-    peerDependenciesMeta:
-      '@tanstack/query-core':
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      eventemitter3: 5.0.1
-      mipd: 0.0.7_typescript@5.8.3
-      typescript: 5.8.3
-      viem: 1.21.4_typescript@5.8.3
-      zustand: 5.0.0_po4keleilqsm4vrhgxl2cr46aq
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-      - react
-      - use-sync-external-store
-    dev: false
-
   /@walletconnect/core/2.11.0:
     resolution: {integrity: sha512-2Tjp5BCevI7dbmqo/OrCjX4tqgMqwJNQLlQAlphqPfvwlF9+tIu6pGcVbSN3U9zyXzWIZCeleqEaWUeSeET4Ew==}
     dependencies:
@@ -2956,7 +2932,7 @@ packages:
       qrcode: 1.5.3
     dev: false
 
-  /@web3modal/wagmi/3.5.7_ore6gowqjk3swvohdgkdceq2my:
+  /@web3modal/wagmi/3.5.7_wcny36q2txrkvpdrw2ucvpdhou:
     resolution: {integrity: sha512-Bag6YCnXn26maD4qVWCQHjlSQo9hMBkf5zivGlwMRA/akNFZyAVrjEGdZTiCrFq3hhRI4k4wdek/pyELYhWpQg==}
     deprecated: Web3Modal is now Reown AppKit. Please follow the upgrade guide at https://docs.reown.com/appkit/upgrade/from-w3m-to-reown
     peerDependencies:
@@ -2972,7 +2948,7 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@wagmi/core': 2.17.0_53oqjmnttgdg7dbfa4xyhdzodm
+      '@wagmi/core': 1.4.13_53oqjmnttgdg7dbfa4xyhdzodm
       '@web3modal/polyfills': 3.5.7
       '@web3modal/scaffold': 3.5.7_po4keleilqsm4vrhgxl2cr46aq
       '@web3modal/scaffold-react': 3.5.7_27kzlijtntas6645qwojwuhdba
@@ -4100,17 +4076,6 @@ packages:
       mime-db: 1.52.0
     dev: false
 
-  /mipd/0.0.7_typescript@5.8.3:
-    resolution: {integrity: sha512-aAPZPNDQ3uMTdKbuO2YmAw2TxLHO0moa4YKAyETM/DTj5FloZo+a+8tU+iv4GmW+sOxKLSRwcSFuczk+Cpt6fg==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      typescript: 5.8.3
-    dev: false
-
   /motion/10.16.2:
     resolution: {integrity: sha512-p+PurYqfUdcJZvtnmAqu5fJgV2kR0uLFQuBKtLeFVTrYEVllI99tiOTSefVNYuip9ELTEkepIIDftNdze76NAQ==}
     dependencies:
@@ -4218,7 +4183,7 @@ packages:
     dependencies:
       '@adraffy/ens-normalize': 1.11.0
       '@noble/curves': 1.8.2
-      '@noble/hashes': 1.7.2
+      '@noble/hashes': 1.8.0
       '@scure/bip32': 1.6.2
       '@scure/bip39': 1.5.4
       abitype: 1.0.8_typescript@5.8.3
@@ -5264,26 +5229,4 @@ packages:
       '@types/react': 18.3.20
       react: 18.3.1
       use-sync-external-store: 1.5.0_react@18.3.1
-    dev: false
-
-  /zustand/5.0.0_po4keleilqsm4vrhgxl2cr46aq:
-    resolution: {integrity: sha512-LE+VcmbartOPM+auOjCCLQOsQ05zUTp8RkgwRzefUk+2jISdMMFnxvyTjA4YNWr5ZGXYbVsEMZosttuxUBkojQ==}
-    engines: {node: '>=12.20.0'}
-    peerDependencies:
-      '@types/react': '>=18.0.0'
-      immer: '>=9.0.6'
-      react: '>=18.0.0'
-      use-sync-external-store: '>=1.2.0'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      immer:
-        optional: true
-      react:
-        optional: true
-      use-sync-external-store:
-        optional: true
-    dependencies:
-      '@types/react': 18.3.20
-      react: 18.3.1
     dev: false
