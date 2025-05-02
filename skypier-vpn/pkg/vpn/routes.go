@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os/exec"
 	"strings"
 
 	"github.com/SkyPierIO/skypier-vpn/pkg/utils"
@@ -105,6 +106,77 @@ func AddEndpointRoute(node host.Host, dht *dht.IpfsDHT, peerId string) error {
 		}
 	}
 
+	return nil
+}
+
+// getDefaultInterfaceAndGateway returns the default network interface and gateway
+func getDefaultInterfaceAndGateway() (string, net.IP, error) {
+	// For Windows, we'll use the route command to get the default gateway
+	cmd := exec.Command("route", "print", "0.0.0.0")
+	output, err := cmd.Output()
+	if err != nil {
+		return "", nil, fmt.Errorf("failed to get default route: %v", err)
+	}
+
+	// Parse the output to get the interface and gateway
+	// This is a simplified version - you might need to adjust the parsing based on your needs
+	lines := strings.Split(string(output), "\n")
+	for _, line := range lines {
+		if strings.Contains(line, "0.0.0.0") {
+			fields := strings.Fields(line)
+			if len(fields) >= 3 {
+				gw := net.ParseIP(fields[2])
+				iface := fields[3]
+				return iface, gw, nil
+			}
+		}
+	}
+
+	return "", nil, fmt.Errorf("default gateway not found")
+}
+
+// routeExists checks if a route already exists
+func routeExists(iface string, dst *net.IPNet) (bool, error) {
+	cmd := exec.Command("route", "print")
+	output, err := cmd.Output()
+	if err != nil {
+		return false, fmt.Errorf("failed to get routes: %v", err)
+	}
+
+	lines := strings.Split(string(output), "\n")
+	for _, line := range lines {
+		if strings.Contains(line, dst.IP.String()) && strings.Contains(line, iface) {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+
+// addHostRoute adds a host route
+func addHostRoute(iface string, dst *net.IPNet, gw net.IP) error {
+	cmd := exec.Command("route", "add", dst.IP.String(), "mask", "255.255.255.255", gw.String(), "if", iface)
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("failed to add route: %v", err)
+	}
+	return nil
+}
+
+// AddDefaultRoute adds a default route through the VPN interface
+func AddDefaultRoute(iface string, gw string) error {
+	cmd := exec.Command("route", "add", "0.0.0.0", "mask", "0.0.0.0", gw, "if", iface)
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("failed to add default route: %v", err)
+	}
+	return nil
+}
+
+// RemoveInterface removes a network interface
+func RemoveInterface(iface string) error {
+	cmd := exec.Command("netsh", "interface", "set", "interface", iface, "admin=disable")
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("failed to remove interface: %v", err)
+	}
 	return nil
 }
 
