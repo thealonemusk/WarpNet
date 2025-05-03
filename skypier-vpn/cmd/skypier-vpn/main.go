@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 	"os/signal"
-	"strconv"
 	"syscall"
 
 	docs "github.com/SkyPierIO/skypier-vpn/pkg/docs"
@@ -137,6 +136,6 @@ func main() {
 	}
 
 	// Run with HTTP
-	err = router.Run("0.0.0.0:" + strconv.FormatUint(uint64(innerConfig.Port), 10))
+	err = router.Run("0.0.0.0:8081")
 	utils.Check(err)
 }

@@ -20,10 +20,8 @@ var (
 func SetInterfaceUp() *water.Interface {
 	config := water.Config{
 		DeviceType: water.TUN,
-		PlatformSpecificParams: water.PlatformSpecificParams{
-			ComponentID: InterfaceName,
-		},
 	}
+	config.Name = InterfaceName
 
 	// Create a new TUN/TAP interface using config.
 	iface, err := water.New(config)

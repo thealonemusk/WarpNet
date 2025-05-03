@@ -10,7 +10,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { WagmiConfig } from "wagmi";
-import { QueryClient } from "@tanstack/react-query";
 import {
 	sepolia,
 	arbitrum,
@@ -44,10 +43,8 @@ const metadata = {
 
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata });
 
-const queryClient = new QueryClient();
-
 createWeb3Modal({ 
-	wagmiConfig: wagmiConfig as any, 
+	wagmiConfig, 
 	projectId, 
 	chains,
 	termsConditionsUrl: 'https://skypier.io/terms-of-service/'
@@ -62,7 +59,7 @@ const apolloClient = new ApolloClient({
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
 		<ApolloProvider client={apolloClient}>
-			<WagmiConfig config={wagmiConfig as any}>
+			<WagmiConfig config={wagmiConfig}>
 				<CssBaseline />
 				<App />
 			</WagmiConfig>
