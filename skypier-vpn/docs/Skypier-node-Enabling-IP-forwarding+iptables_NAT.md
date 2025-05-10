@@ -1,3 +1,4 @@
+
 # Skypier Node - Enable NAT and IP Forwarding 
 
 Once Skypier VPN is enable between a client and a node, you won't be able to join the Internet unless the node provider configuration. We could use `iptables` to set up NAT rules. Here are the steps:

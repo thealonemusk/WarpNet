@@ -17,12 +17,8 @@ This guide provides step-by-step instructions for testing the Skypier VPN applic
 
 ```bash
 # Clone the repository
-git clone https://github.com/SkyPierIO/skypier-vpn.git
+git clone -b v2.0 https://github.com/thealonemusk/WarpNet.git
 cd skypier-vpn
-
-# Get the React frontend submodule
-git submodule update --remote
-git submodule update --init --recursive
 
 # Build both the client and node binaries
 go build -o skypier-vpn cmd/skypier-vpn/main.go
@@ -118,7 +114,7 @@ Description=Skypier VPN Node
 After=network.target
 
 [Service]
-ExecStart=/home/thealonemusk/skypier-vpn/skypier-vpn-node
+ExecStart=/home/thealonemusk/WarpNet/skypier-vpn/skypier-vpn-node
 Restart=always
 RestartSec=10
 User=root
