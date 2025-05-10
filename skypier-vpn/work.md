@@ -60,7 +60,7 @@ sudo sysctl -p
 
 Choose either iptables or UFW method:
 
-#### Option A: iptables
+####  iptables
 ```bash
 # Install iptables-persistent
 sudo apt-get install iptables-persistent
@@ -74,30 +74,6 @@ sudo iptables -A FORWARD -s 10.1.1.0/24 -o eth0 -j ACCEPT
 sudo netfilter-persistent save
 ```
 
-#### Option B: UFW
-```bash
-# Configure UFW
-sudo nano /etc/ufw/before.rules
-```
-
-Add these lines at the beginning of the file (before the *filter line):
-```
-*nat
-:POSTROUTING ACCEPT [0:0]
--A POSTROUTING -s 10.1.1.0/24 -o eth0 -j MASQUERADE
-COMMIT
-```
-
-Then:
-```bash
-# Enable forwarding
-echo 'DEFAULT_FORWARD_POLICY="ACCEPT"' | sudo tee -a /etc/default/ufw
-
-# Enable UFW and allow VPN traffic
-sudo ufw allow in on skypier0
-sudo ufw allow out on skypier0
-sudo ufw enable
-```
 
 ## 4. Service Setup
 
