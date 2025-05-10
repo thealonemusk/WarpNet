@@ -1,0 +1,14 @@
+otp:
+  dht:
+    interval: 360
+    key: 8BG3ZqkEfw7YUZg51Ms3ISh2arzdgRNQdGiuK2GCUYz
+    length: 43
+  crypto:
+    interval: 360
+    key: sW1fUJg9up1RgBFkPadaweZhKJpuknPCWBva7WW9ps8
+    length: 43
+room: dim85bPwbE1HIHPph8PdNj8TaNwk1DKe14zmSTM1nFK
+rendezvous: m6R9NXo8S50iPRorW1gdp94euR76nJuMwTZZx9h5yL5
+mdns: Y6rAnNPStSHmR9aQuoKOYV530QR0tIZ0aCNe7lJzNvo
+max_message_size: 20971520
+
