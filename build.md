@@ -267,10 +267,3 @@ sysctl -w net.core.rmem_max=2500000
 # :notebook: LICENSE
 
 Apache License v2.
-
-```
-edgevpn  Copyright (C) 2021 Ettore Di Giacinto
-This program comes with ABSOLUTELY NO WARRANTY.
-This is free software, and you are welcome to redistribute it
-under certain conditions.
-```
