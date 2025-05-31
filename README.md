@@ -19,6 +19,11 @@ A decentralized private network built using libp2p that creates an immutable tru
 curl -sfL https://raw.githubusercontent.com/thealonemusk/WarpNet/main/install.sh | sh -
 ```
 
+## to run frontend 
+
+sudo WarpNetCONFIG=config.yaml ./WarpNet api
+
+
 ### Option 2: Manual installation
 1. Download the latest release from the [releases page](https://github.com/thealonemusk/WarpNet/releases)
 2. Extract the binary to your desired location

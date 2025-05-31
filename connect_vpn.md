@@ -74,7 +74,7 @@ sudo WarpNetTOKEN=<your-token> ./WarpNet --address 10.1.0.13/24  # increment the
 
 1. Check if the VPN interface is created:
 ```bash
-ip addr show edgevpn0
+ip addr show WarpNet0
 ```
 
 2. Test connectivity between nodes:

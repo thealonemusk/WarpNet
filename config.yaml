@@ -1,14 +1,14 @@
 otp:
   dht:
     interval: 360
-    key: HY2Pvju1tL7dMiMOuMrvV9PFZJdqc8fl4BsJa82Jrd6
+    key: YlyOjZoSJ2e1nOTEQow6hvJHhdOymg4wdrDkOKoQRId
     length: 43
   crypto:
     interval: 360
-    key: z2g53A6CGKHQQOHgm08f1aZDYmGKSQFYCjP7aqMtT7k
+    key: jyzqLdahCwZZ05GEdGw7ZrOZs0oA19tlOinY4uu7tQd
     length: 43
-room: wH3JdttE00BJpQjJmzo4ego4Nhc5isghvJssiEBCY0l
-rendezvous: 9PDGNoiHLAELUzIL8rzZrfpk70tZtIAQvCE7flObPux
-mdns: mlCX79EIDHeoKcZXqpy8vxGkvt2ultdkQWAEuFPOU3B
+room: NUDZolnz4pn1RQIMHcHGFbJ8GkEte9QSDJrneFmRw5u
+rendezvous: g3vcQQQpbqe2ivyyDTi59eZv8ELxYZahWWuLUB2R1bk
+mdns: XsCQnq4jZuYYWEElZIPnlWAhDC4a30m95y3NmYzhW5p
 max_message_size: 20971520
 
